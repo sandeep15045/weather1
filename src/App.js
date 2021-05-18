@@ -7,10 +7,10 @@ import {API_KEY, API_BASE_URL} from './apis/config'
 import WeatherList from './components/WeatherList';
 
 const App = () => {
-  const {data,setUrl} = UseFetch();
+  const {data,error,setUrl} = UseFetch();
   
   const getContent = () => {
-   
+    if(error) return <h2>Error when fetching: {error}</h2>
     if(!data) return null;
     return <WeatherList weathers={data.list} />
   };
